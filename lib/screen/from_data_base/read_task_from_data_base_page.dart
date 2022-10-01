@@ -128,8 +128,6 @@ class _ReadTaskFromDataBasePageState extends State<ReadTaskFromDataBasePage> {
                           createTask.add(EditTaskEvent(
                               taskForDataBaseModel: task!
                           ));
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const AllTaskFromDataBasePage()));
                         });
                       },
                     )

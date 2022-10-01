@@ -169,8 +169,8 @@ class _AllTaskFromNetPageState extends State<AllTaskFromNetPage> {
                                           createTask.add(EditTaskEvent(
                                               taskModel: task[index]
                                           ));
-                                          Navigator.of(context).push(MaterialPageRoute(
-                                              builder: (context) => const AllTaskFromNetPage()));
+                                          // Navigator.of(context).push(MaterialPageRoute(
+                                          //     builder: (context) => const AllTaskFromNetPage()));
                                         });
 
                                       },

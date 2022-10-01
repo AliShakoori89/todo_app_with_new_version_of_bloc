@@ -71,22 +71,9 @@ class TaskFromNetBloc extends Bloc<TaskFromNetEvent, TaskFromNetState>{
     }
   }
 
+  // your Edit task method don't need try catch because change state only
   void _mapEditTaskEventToState(
       EditTaskEvent event, Emitter<TaskFromNetState> emit) async {
-    try{
-      emit(state.copyWith(status: TaskFromNetStatus.loading));
-      await taskRepository.editTask(event.taskModel);
-      final response = await taskRepository.getAllTask();
-      Iterable l = json.decode(response.body);
-      List<TaskModel> allTask = List<TaskModel>.from(l.map((model)=> TaskModel.fromJson(model)));
-      emit(
-          state.copyWith(
-            status: TaskFromNetStatus.success,
-            allTask: allTask
-          )
-      );
-    }catch (error){
-      emit(state.copyWith(status: TaskFromNetStatus.error));
-    }
+    await taskRepository.editTask(event.taskModel);
   }
 }

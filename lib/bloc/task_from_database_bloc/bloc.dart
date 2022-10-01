@@ -60,18 +60,9 @@ class TaskFromDataBaseBloc extends Bloc<TaskFromDataBaseEvent, TaskFromDataBaseS
     }
   }
 
+  // your Edit task method don't need try catch because change state only
   void _mapEditTaskEventToState(
       EditTaskEvent event, Emitter<TaskFromDataBaseState> emit) async {
-    try{
-      emit(state.copyWith(status: TaskFromDataBaseStatus.loading));
-      await taskRepository.updateTaskToDataBase(event.taskForDataBaseModel);
-      emit(
-          state.copyWith(
-            status: TaskFromDataBaseStatus.success,
-          )
-      );
-    }catch (error){
-      emit(state.copyWith(status: TaskFromDataBaseStatus.error));
-    }
+    await taskRepository.updateTaskToDataBase(event.taskForDataBaseModel);
   }
 }

@@ -123,13 +123,9 @@ class _ReadTaskFromNetPageState extends State<ReadTaskFromNetPage> {
                         setState(() {
                           isChecked = value!;
                           task!.done = isChecked;
-                          final createTask =
-                          BlocProvider.of<TaskFromNetBloc>(context);
-                          createTask.add(EditTaskEvent(
+                          BlocProvider.of<TaskFromNetBloc>(context).add(EditTaskEvent(
                               taskModel: task!
                           ));
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const AllTaskFromNetPage()));
                         });
                       },
                     )
